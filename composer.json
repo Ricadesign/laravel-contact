@@ -1,0 +1,27 @@
+{
+    "name": "ricadesign/laravel-contact",
+    "description": "Creates contact backend and scaffolds frontend of contact form",
+    "type": "li",
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": "^5.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian Payet",
+            "email": "payet91@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ricadesing\\Contact\\ContactServiceProvider"
+            ],
+            "aliases": {
+                "Bar": "Foo\\Bar\\Facade"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}
