@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return 'Contact Package page';
+        return view('contact::index');
     }
 
     /**
