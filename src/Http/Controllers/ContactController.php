@@ -4,6 +4,9 @@ namespace Ricadesign\Contact;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Ricadesign\Contact\Mail\MessageSent;
+
 
 class ContactController extends Controller
 {
@@ -30,8 +33,12 @@ class ContactController extends Controller
            'email'=> 'required|email',
            'message' => 'required|min:12',
         ]);
-        dd($result);
-
+        $name = $result['name'];
+        $email = $result['email'];
+        $message = $result['message'];
+        Mail::to('payet91@gmail.com')
+        ->send(new MessageSent($name, $email, $message));
+        return 'done';
     }
 
 }
