@@ -25,7 +25,13 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $request->validate( [
+           'name' => 'required',
+           'email'=> 'required|email',
+           'message' => 'required|min:12',
+        ]);
+        dd($result);
+
     }
 
 }
