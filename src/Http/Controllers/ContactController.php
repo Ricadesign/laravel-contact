@@ -36,9 +36,8 @@ class ContactController extends Controller
         $name = $result['name'];
         $email = $result['email'];
         $message = $result['message'];
-
         //SendMail
-        Mail::to(config('contact.mail'))
+        Mail::to(config('contact.email'))
         ->send(new MessageSent($name, $email, $message));
         //Everything OK
         return view('contact::index')
