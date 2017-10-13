@@ -38,7 +38,7 @@ class ContactController extends Controller
         $message = $result['message'];
         Mail::to('payet91@gmail.com')
         ->send(new MessageSent($name, $email, $message));
-        return 'done';
+        return view('contact::view');
     }
 
 }
