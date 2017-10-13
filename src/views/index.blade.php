@@ -10,7 +10,7 @@
                     {{ $message }}
                   </div>
                 @endif
-                <form action="/test" method="post">
+                <form action="/contact" method="post">
                   {{ csrf_field() }}
                   @if($errors->has('name'))
                     <div class="form-group has-error">
