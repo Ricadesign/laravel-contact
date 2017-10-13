@@ -5,6 +5,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 text-center">
                 <h1>Contacto</h1>
+                @if(isset($message))
+                  <div class="alert alert-success">
+                    {{ $message }}
+                  </div>
+                @endif
                 <form action="/test" method="post">
                   {{ csrf_field() }}
                   @if($errors->has('name'))
