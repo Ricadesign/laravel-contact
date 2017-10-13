@@ -7,7 +7,7 @@ This composer package offers a Twitter Bootstrap optimized flash messaging setup
 Begin by pulling in the package through Composer.
 
 ```bash
-composer require laracasts/flash
+composer require ricadesign/laravel-contact
 ```
 
 Next, if using Laravel 5, include the service provider within your `config/app.php` file.
