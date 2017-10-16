@@ -14,14 +14,8 @@ Next, if using Laravel 5, include the service provider within your `config/app.p
 
 ```php
 'providers' => [
-    Laracasts\Flash\FlashServiceProvider::class,
+    Ricadesign\Contact\ContactServiceProvider::class,
 ];
-```
-
-Finally, as noted above, the default CSS classes for your flash message are optimized for Twitter Bootstrap. As such, pull in the Bootstrap's CSS within your HTML or layout file.
-
-```html
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 ```
 ## Configuration 
 
