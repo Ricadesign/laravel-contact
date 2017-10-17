@@ -1,6 +1,6 @@
 # Easy Contact Form for Your Laravel App
 
-This composer package offers a Twitter Bootstrap optimized flash messaging setup for your Laravel applications.
+This composer package offers a setup for contact form. Provides a default view for the contact form, set routes for the contact form view and the submit of the form, and adds the controller logic to send the information of the form to an email adress.
 
 ## Installation
 
