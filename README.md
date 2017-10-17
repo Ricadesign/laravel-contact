@@ -22,7 +22,7 @@ Next, if using Laravel 5, include the service provider within your `config/app.p
 
 You can configure the email adress where the contact form message is sent to by adding the following variables to the .env file.
 
-```php
+```ini
 CONTACT_MAIL=john.doe@example.com
 ```
 If you need to modify the form view, you can publish the form view with the following command:
