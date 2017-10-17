@@ -44,7 +44,9 @@ return [
 
 ## Usage
 
-## Example
+Once installed you can navigate to the "/contact" URL of you web application. This will show the default view or, in case you have published the view, the custom view for the contact form.
+
+There is a route for "/contact" that's expecting a post method with the message information to be sent to the contact email.
 
 
 
