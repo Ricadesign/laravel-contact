@@ -10,8 +10,9 @@ Begin by pulling in the package through Composer.
 composer require ricadesign/laravel-contact
 ```
 
-Next, if using Laravel 5, include the service provider within your `config/app.php` file.
 
+
+Next, if using Laravel 5, include the service provider within your `config/app.php` file. From version 5.5 and thanks to [package autodiscovery](https://laravel-news.com/package-auto-discovery) this is no longer necesary.
 ```php
 'providers' => [
     Ricadesign\Contact\ContactServiceProvider::class,
