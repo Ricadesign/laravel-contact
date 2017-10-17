@@ -20,15 +20,32 @@ Next, if using Laravel 5, include the service provider within your `config/app.p
 ```
 ## Configuration 
 
+You can configure the email adress where the contact form message is sent to by adding the following variables to the .env file.
+
+```php
+CONTACT_MAIL=john.doe@example.com
+```
+If you need to modify the form view, you can publish the form view with the following command:
+
+```bash
+php artisan vendor:publish
+```
+This will also publish the config file, contact.php. Wich you can modify to add the email adress:
+
+```php
+<?php
+
+return [
+
+    'email' => env('CONTACT_MAIL'),
+
+];
+```
+
 ## Usage
 
 ## Example
 
 
-If you need to modify the flash message partials, you can run:
-
-```bash
-php artisan vendor:publish --provider="Laracasts\Flash\FlashServiceProvider"
-```
 
 
