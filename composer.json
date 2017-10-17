@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ricadesing\\Contact\\ContactServiceProvider"
+                "Ricadesign\\Contact\\ContactServiceProvider"
             ],
             "aliases": {
                 "Bar": "Foo\\Bar\\Facade"
