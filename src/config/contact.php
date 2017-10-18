@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Mail Driver
+    | Contact Mail
     |--------------------------------------------------------------------------
     |
     | Email to send the messages sent by the people who fill the contact form
