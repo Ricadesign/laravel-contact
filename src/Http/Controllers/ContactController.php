@@ -41,7 +41,7 @@ class ContactController extends Controller
         ->send(new MessageSent($name, $email, $message));
         //Everything OK
         return view('contact::index')
-          ->with('message', 'Se ha enviado el mensaje correctamente');
+          ->with('message', 'The message has been sent succesfully');
     }
 
 }
