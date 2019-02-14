@@ -31,5 +31,8 @@ class ContactServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Ricadesign\Contact\ContactController');
+        $this->mergeConfigFrom(
+             __DIR__.'/config/contact.php', 'contact'
+         );
     }
 }

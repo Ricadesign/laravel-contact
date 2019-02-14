@@ -13,6 +13,6 @@ return [
     |
     */
 
-    'email' => env('CONTACT_MAIL'),
+    'email' => env('CONTACT_MAIL', 'john.doe@example.com'),
 
 ];
