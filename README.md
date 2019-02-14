@@ -37,7 +37,7 @@ This will also publish the config file, contact.php. Wich you can modify to add 
 
 return [
 
-    'email' => env('CONTACT_MAIL'),
+    'email' => env('CONTACT_MAIL', 'john.doe@example.com'),
 
 ];
 ```
