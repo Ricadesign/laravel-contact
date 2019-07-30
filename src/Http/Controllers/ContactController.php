@@ -31,14 +31,16 @@ class ContactController extends Controller
         $result = $request->validate( [
            'name' => 'required',
            'email'=> 'required|email',
+           'phone' => 'sometimes|required|size:9',
            'message' => 'required|min:12',
         ]);
         $name = $result['name'];
         $email = $result['email'];
         $message = $result['message'];
+        $phone =  $request->input('phone', null);
         //SendMail
         Mail::to(config('contact.email'))
-        ->send(new MessageSent($name, $email, $message));
+        ->send(new MessageSent($name, $email, $message, $phone));
         //Everything OK
         return view('contact::index')
           ->with('message', 'The message has been sent succesfully');
