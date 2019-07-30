@@ -27,7 +27,7 @@ class MessageSent extends Mailable
         $this->name = $name;
         $this->email = $email;
         $this->text = $text;
-        $this->$phone = $phone;
+        $this->phone = $phone;
     }
 
     /**
