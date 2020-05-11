@@ -4,7 +4,7 @@
     "type": "li",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "^5.5",
+        "laravel/framework": "^6.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "license": "MIT",
