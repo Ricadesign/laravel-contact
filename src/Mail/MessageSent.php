@@ -14,7 +14,6 @@ class MessageSent extends Mailable
     public $name;
     public $email;
     public $text;
-    public $phone;
 
 
     /**
@@ -22,12 +21,11 @@ class MessageSent extends Mailable
      *
      * @return void
      */
-    public function __construct(string $name, string $email, string $text, string $phone)
+    public function __construct(string $name, string $email, string $text)
     {
         $this->name = $name;
         $this->email = $email;
         $this->text = $text;
-        $this->$phone = $phone;
     }
 
     /**

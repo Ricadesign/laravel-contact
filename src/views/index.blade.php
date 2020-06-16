@@ -1,93 +1,57 @@
 @extends('layouts.app')
 
 @section('content')
+<style src="{{ voyager_asset('css/app.css') }}"></style>
 <div class="container m-auto">
-    <div class="row justify-content-center">
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
-            <h1>Contacto</h1>
-            @if(isset($message))
-            <div class="alert alert-success">
-              {{ $message }}
+    <div class="text-center">
+      <h1>Contacto</h1>
+      <form action="/contact" method="post" class="needs-validation" novalidate>
+        @csrf
+        <div class=" px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+          <div class="-mx-3 md:flex mb-6">
+            <div class="md:w-1/3 px-3 mb-3 md:mb-0">
+              <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Nombre">
+                Nombre
+              </label>
+              <input name="name" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-gray-200 border rounded py-3 px-4" id="Nombre" type="text" placeholder="Nombre" required>
+              <p id="name-label-success" class="text-green-500"></p>
+              <p id="name-label-error" class="text-red-500"></p>
             </div>
-            @endif
-          <form class="{{$errors->any() ? '' :  'needs-validation'}}" id="needs-validation" action="/contact" method="post" novalidate>
-            {{ csrf_field() }}
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label for="name">Nombre</label>
-                  @if($errors->any())
-                    <input type="text" name="name" class="form-control {{$errors->has('name') ? 'is-invalid':'is-valid'}}" id="name" placeholder="Nombres" value="{{ old('name')}}" required>
-                  @else
-                   <input type="text" name="name" class="form-control" id="name" placeholder="Nombres" value="{{ old('name')}}" required>
-                  @endif
-                  <div class="invalid-feedback">
-                    {{$errors->has('name') ?  $errors->first('name') : 'Rellena el campo nombre'}}
-                  </div>
-                  <div class="valid-feedback">
-                    Campo Válido
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  @if($errors->any())
-                    <input type="email" name="email" class="form-control {{$errors->has('email') ? 'is-invalid':'is-valid'}}" id="email" placeholder="Email" value="{{old('email')}}" required>
-                  @else
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{old('email')}}" required>
-                  @endif
-                  <div class="invalid-feedback">
-                    {{$errors->has('email') ?  $errors->first('email') : 'Rellena el campo email con un email valido'}}
-                  </div>
-                  <div class="valid-feedback">
-                    Campo Válido
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-12">
-                <div class="form-group">
-                <label for="message">Mensaje</label>
-                @if($errors->any())
-                  <textarea type="text" name="message" class="form-control {{$errors->has('message') ? 'is-invalid':'is-valid'}}" id="message" placeholder="Mensaje" rows="5" required>{{ old('message')}}</textarea>
-                @else
-                  <textarea type="text" name="message" class="form-control" id="message" placeholder="Mensaje" rows="5" required>{{ old('message')}}</textarea>
-                @endif
-                <div class="invalid-feedback">
-                  {{$errors->has('message') ?  $errors->first('message') : 'Rellena el campo mensaje'}}
-                </div>
-                <div class="valid-feedback">
-                  Campo Válido
-                </div>
-                </div>
-              </div>
+            <div class="md:w-1/3 px-3 mb-3">
+              <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Telefono">
+                Teléfono
+              </label>
+              <input name="phone" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4" id="Telefono" type="phone" placeholder="Teléfono" required>
+              <p id="phone-label-success" class="text-green-500"></p>
+              <p id="phone-label-error" class="text-red-500"></p>
             </div>
-            <div class="col-lg-2 send text-center text-lg-left">
-              <button class="btn btn-lg btn-outline-primary" type="submit">{{__('Enviar')}}</button>
+            <div class="md:w-1/3 px-3 mb-3">
+              <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Email">
+                Email
+              </label>
+              <input name="email" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4" id="Email" type="email" placeholder="Email" required>
+              <p id="email-label-success" class="text-green-500"></p>
+              <p id="email-label-error" class="text-red-500"></p>
             </div>
-          </form>
+          </div>
+          <div class="-mx-3 md:flex mb-6">
+            <div class="md:w-full px-3">
+              <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Mensaje">
+                Mensaje
+              </label>
+              <textarea name="message" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4 mb-3" rows="5" id="Mensaje" placeholder="Mensaje" required minlength="12"></textarea>
+              <p id="message-label-success" class="text-green-500"></p>
+              <p id="message-label-error" class="text-red-500"></p>
+            </div>
+          </div>
+          <button id="submit" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-48 m-auto">
+          <span id="send-text" class="">Enviar</span>
+          <div id="loader" class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6 hidden"></div>
+          </button>
         </div>
+      </form>
     </div>
-    <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-    </script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="{{ contact_asset('js/app.js') }}"></script>
 </div>
 @endsection
