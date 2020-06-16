@@ -22,7 +22,7 @@ class MessageSent extends Mailable
      *
      * @return void
      */
-    public function __construct(string $name, string $email, string $text)
+    public function __construct(string $name, string $email, string $text, string $phone)
     {
         $this->name = $name;
         $this->email = $email;
