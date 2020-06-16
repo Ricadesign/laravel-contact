@@ -24,8 +24,4 @@ return [
     |
     */
 
-    'controllers' => [
-        'namespace' => 'Ricadesign\\Contact\\Http\\Controllers',
-    ],
-
 ];
