@@ -2,6 +2,9 @@
 
 @section('content')
 <style>
+input:focus, textarea:focus{
+  outline: none;
+}
   /*Loading Gif*/
 .loader {
     margin: auto;
@@ -43,6 +46,10 @@
     bottom: 0px;
     opacity: 0;
   
+  }
+
+  .error-snack{
+    background-color: #ff5252 !important;
   }
   
   @media (min-width: 640px) {
@@ -109,7 +116,7 @@
               <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Nombre">
                 Nombre
               </label>
-              <input name="name" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-gray-200 border rounded py-3 px-4" id="Nombre" type="text" placeholder="Nombre" required>
+              <input name="name" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-gray-200 border-2 rounded py-3 px-4" id="Nombre" type="text" placeholder="Nombre" required>
               <p id="name-label-success" class="text-green-500"></p>
               <p id="name-label-error" class="text-red-500"></p>
             </div>
@@ -117,7 +124,7 @@
               <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Telefono">
                 Teléfono
               </label>
-              <input name="phone" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4" id="Telefono" type="phone" placeholder="Teléfono" required>
+              <input name="phone" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-2 border-gray-200 rounded py-3 px-4" id="Telefono" type="phone" placeholder="Teléfono" required>
               <p id="phone-label-success" class="text-green-500"></p>
               <p id="phone-label-error" class="text-red-500"></p>
             </div>
@@ -125,7 +132,7 @@
               <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Email">
                 Email
               </label>
-              <input name="email" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4" id="Email" type="email" placeholder="Email" required>
+              <input name="email" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-2 border-gray-200 rounded py-3 px-4" id="Email" type="email" placeholder="Email" required>
               <p id="email-label-success" class="text-green-500"></p>
               <p id="email-label-error" class="text-red-500"></p>
             </div>
@@ -135,7 +142,7 @@
               <label class="block uppercase tracking-wide text-grey-900 text-xs font-bold mb-2" for="Mensaje">
                 Mensaje
               </label>
-              <textarea name="message" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border border-gray-200 rounded py-3 px-4 mb-3" rows="5" id="Mensaje" placeholder="Mensaje" required minlength="12"></textarea>
+              <textarea name="message" class="rounded-lg appearance-none block w-full bg-gray-200 focus:border-gray-900 text-grey-900 border-2 border-gray-200 rounded py-3 px-4 mb-3" rows="5" id="Mensaje" placeholder="Mensaje" required minlength="12"></textarea>
               <p id="message-label-success" class="text-green-500"></p>
               <p id="message-label-error" class="text-red-500"></p>
             </div>
@@ -154,12 +161,13 @@
   var previous = null;
   
   
-    return function(message, actionText, action) {
+    return function(message, actionText, action, error) {
       if (previous) {
         previous.dismiss();
       }
       var snackbar = document.createElement('div');
       snackbar.className = 'paper-snackbar';
+      error ? snackbar.className += ' error-snack' : '';
       snackbar.dismiss = function() {
         this.style.opacity = 0;
       };
@@ -179,7 +187,7 @@
         if (previous === this) {
           previous.dismiss();
         }
-      }.bind(snackbar), 5000);
+      }.bind(snackbar), 50000);
       
       snackbar.addEventListener('transitionend', function(event, elapsed) {
         if (event.propertyName === 'opacity' && this.style.opacity == 0) {
@@ -324,7 +332,7 @@
               axios.post(form.action, data)
                 .then(res => {
                   console.log(res);
-                  createSnackbar('Tu mensaje se ha enviado con éxito!', 'Close');
+                  createSnackbar('Tu mensaje se ha enviado con éxito!', null);
                   form.reset();
                   fields.forEach(element => {
                     cleanForm(element);
@@ -332,6 +340,8 @@
                   hideLoader()
                 }).catch(err => {
                     console.log(err);
+                    createSnackbar('No se ha podido enviar el mensaje!', null, null, true);
+                    hideLoader()
                 })
             }
 
