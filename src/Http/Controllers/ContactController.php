@@ -42,7 +42,8 @@ class ContactController extends Controller
         Mail::to(config('contact.email'))
         ->send(new MessageSent($name, $email, $message, $phone));
         //Everything OK
-        return 'Message Sent';
+        return view('contact::index')
+          ->with('message', 'The message has been sent succesfully');
     }
 
 }

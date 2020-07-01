@@ -15,13 +15,4 @@ return [
 
     'email' => env('CONTACT_MAIL', 'john.doe@example.com'),
 
-     /*
-    |--------------------------------------------------------------------------
-    | Controllers config
-    |--------------------------------------------------------------------------
-    |
-    | Here you can specify voyager controller settings
-    |
-    */
-
 ];
