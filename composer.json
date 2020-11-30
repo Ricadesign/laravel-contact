@@ -15,8 +15,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Ricadesign\\Contact\\": "src"
+        "psr-4": {
+            "Ricadesign\\Contact\\": "src/"
         }
     },
     "extra": {
