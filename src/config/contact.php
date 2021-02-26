@@ -15,13 +15,15 @@ return [
 
     'email' => env('CONTACT_MAIL', 'john.doe@example.com'),
 
-     /*
+    /*
     |--------------------------------------------------------------------------
-    | Controllers config
+    | Use default GET route
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager controller settings
+    | By default, the package will generate a default /contact GET route to contact view.
+    | Set this option to false if you don't want this route to be registered.
     |
     */
 
+    'use_default_get_route' => true,
 ];

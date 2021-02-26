@@ -17,10 +17,8 @@ class ContactServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/views', 'contact');
         $this->publishes([
             __DIR__.'/views' => resource_path('views/vendor/contact'),
-        ]);
-        $this->publishes([
             __DIR__.'/config/contact.php' => config_path('contact.php'),
-        ]);
+        ], 'ricadesign/laravel-contact');
     }
 
     /**
@@ -32,7 +30,7 @@ class ContactServiceProvider extends ServiceProvider
     {
         $this->app->make('Ricadesign\Contact\ContactController');
         $this->mergeConfigFrom(
-             __DIR__.'/config/contact.php', 'contact'
-         );
+            __DIR__.'/config/contact.php', 'contact'
+        );
     }
 }
