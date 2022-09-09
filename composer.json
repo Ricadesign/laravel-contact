@@ -3,8 +3,8 @@
     "description": "Creates contact backend and scaffolds frontend of contact form",
     "type": "li",
     "require": {
-        "php": ">=7.0.0",
-        "laravel/framework": "^5.0 | ^6.0",
+        "php": ">=7.0.0 | ^8.0.0",
+        "laravel/framework": "^5.0 | ^6.0 | ^7.0",
         "guzzlehttp/guzzle": "^6.3"
     },
     "license": "MIT",
